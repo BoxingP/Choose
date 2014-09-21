@@ -15,7 +15,7 @@ public class HotelChooserTest {
     @Test
     public void aRewardsWithMon_shouldReturn_lakewood() {
         HotelChooser hotelChooser = new HotelChooser();
-        assertThat(hotelChooser.choose("Regular",1,0), is("Lakewood"));
+        assertThat(hotelChooser.choose("Rewards",1,0), is("Lakewood"));
     }
 
     @Test
