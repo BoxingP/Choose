@@ -1,4 +1,4 @@
-package com.boxing.unit;
+package com.boxing.hotelSystem;
 
 public class HotelSystem {
     public String book(String bookInformation) {

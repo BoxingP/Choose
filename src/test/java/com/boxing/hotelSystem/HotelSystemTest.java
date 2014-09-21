@@ -1,4 +1,4 @@
-package com.boxing.unit;
+package com.boxing.hotelSystem;
 
 import org.junit.Test;
 
@@ -8,7 +8,7 @@ import static org.hamcrest.core.Is.is;
 public class HotelSystemTest {
     @Test
     public void aRegularWithMonTuesWedBookInformation_shouldReturn_lakewood() {
-        String bookInformation = "Regular: 16Mar2009(mon), 17Mar2009(tues), 18Mar2009(wed)";
+        String bookInformation = "Regular: 22Sep2014(mon), 23Sep2014(tues), 24Sep2014(wed)";
         HotelSystem hotelSystem = new HotelSystem();
         assertThat(hotelSystem.book(bookInformation), is("Lakewood"));
     }
