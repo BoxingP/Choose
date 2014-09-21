@@ -9,12 +9,18 @@ public class HotelChooserTest {
     @Test
     public void aRegularWithMon_shouldReturn_lakewood() {
         HotelChooser hotelChooser = new HotelChooser();
-        assertThat(hotelChooser.choose("Regular: 16Mar2009(mon)"), is("Lakewood"));
+        assertThat(hotelChooser.choose("Regular",1,0), is("Lakewood"));
     }
 
     @Test
     public void aRewardsWithMon_shouldReturn_lakewood() {
         HotelChooser hotelChooser = new HotelChooser();
-        assertThat(hotelChooser.choose("Rewards: 16Mar2009(mon)"), is("Lakewood"));
+        assertThat(hotelChooser.choose("Regular",1,0), is("Lakewood"));
+    }
+
+    @Test
+    public void aRegularWithSat_shouldReturn_bridgewood() {
+        HotelChooser hotelChooser = new HotelChooser();
+        assertThat(hotelChooser.choose("Regular",0,1), is("Bridgewood"));
     }
 }
