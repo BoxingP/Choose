@@ -16,6 +16,9 @@ public class HotelChooser {
                 cheapPrice=hotelPrice[i];
                 index=i;
             }
+            if (hotelPrice[i]==cheapPrice) {
+                index=i;
+            }
         }
         switch (index) {
             case 0: return "Lakewood";
