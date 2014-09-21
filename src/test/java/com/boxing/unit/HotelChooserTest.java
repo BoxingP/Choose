@@ -11,4 +11,10 @@ public class HotelChooserTest {
         HotelChooser hotelChooser = new HotelChooser();
         assertThat(hotelChooser.choose("Regular: 16Mar2009(mon)"), is("Lakewood"));
     }
+
+    @Test
+    public void aRewardsWithMon_shouldReturn_lakewood() {
+        HotelChooser hotelChooser = new HotelChooser();
+        assertThat(hotelChooser.choose("Rewards: 16Mar2009(mon)"), is("Lakewood"));
+    }
 }
