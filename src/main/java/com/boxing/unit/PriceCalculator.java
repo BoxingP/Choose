@@ -23,7 +23,7 @@ public class PriceCalculator {
         if (clientClass.equals("Regular")) {
             price =hotel.regularWeekdayUnitPrice*weekdayAmount+hotel.regularWeekendUnitPrice*weekendAmount;
         }
-        if (clientClass.equals("Reward")) {
+        if (clientClass.equals("Rewards")) {
             price =hotel.rewardsWeekdayUnitPrice*weekdayAmount+hotel.rewardsWeekendUnitPrice*weekendAmount;
         }
         return price;
