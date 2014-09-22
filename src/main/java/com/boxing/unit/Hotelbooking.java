@@ -19,4 +19,9 @@ public class HotelBooking {
         }
         return 0;
     }
+
+    public String getClientClass(String bookInformation) {
+        String[] Information = bookInformation.split(": ");
+        return Information[0];
+    }
 }
