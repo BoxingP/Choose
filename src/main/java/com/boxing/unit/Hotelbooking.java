@@ -1,33 +1,58 @@
 package com.boxing.unit;
 
 public class HotelBooking {
-    private String[] weekday = new String[]{"mon", "tues", "wed", "thur", "fri"};
-    private String[] weekend = new String[]{"sat", "sun"};
+    private String clientClass;
+    private String[] dates;
 
-    public int getWeekdayAmount(String date) {
-        for (int i = 0; i < weekday.length; i++) {
-            if (date.contains(weekday[i]))
-                return 1;
+    public HotelBooking(String bookInformation) {
+        divideInformation(bookInformation);
+    }
+
+    public int getWeekdayAmount() {
+        int weekdayAmount=0;
+        for (String date:dates) {
+            if (isWeekday(date)) weekdayAmount++;
         }
-        return 0;
+        return weekdayAmount;
     }
 
-    public int getWeekendAmount(String date) {
-        for (int i = 0; i < weekend.length; i++) {
-            if (date.contains(weekend[i]))
-                return 1;
+    public int getWeekendAmount() {
+        int weekendAmount=0;
+        for (String date:dates) {
+            if (isWeekend(date)) weekendAmount++;
         }
-        return 0;
+        return weekendAmount;
     }
 
-    public String getClientClass(String bookInformation) {
-        String[] Information = bookInformation.split(": ");
-        return Information[0];
+    public String getClientClass() {
+        return clientClass;
     }
 
-    public String[] getDate(String bookInformation) {
+    public String[] getDates() {
+        return dates;
+    }
+
+    private void divideInformation(String bookInformation) {
         String[] Information = bookInformation.split(": ");
-        String[] date = Information[1].split(",");
-        return date;
+        clientClass = Information[0];
+        dates = Information[1].split(",");
+    }
+
+    private boolean isWeekday(String date) {
+        final String[] weekday = new String[]{"mon", "tues", "wed", "thur", "fri"};
+        for (String aWeekend : weekday) {
+            if (date.contains(aWeekend))
+                return true;
+        }
+        return false;
+    }
+
+    private boolean isWeekend(String date) {
+        final String[] weekend = new String[]{"sat", "sun"};
+        for (String aWeekend : weekend) {
+            if (date.contains(aWeekend))
+                return true;
+        }
+        return false;
     }
 }
