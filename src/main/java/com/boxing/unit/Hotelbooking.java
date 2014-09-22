@@ -24,4 +24,10 @@ public class HotelBooking {
         String[] Information = bookInformation.split(": ");
         return Information[0];
     }
+
+    public String[] getDate(String bookInformation) {
+        String[] Information = bookInformation.split(": ");
+        String[] date = Information[1].split(",");
+        return date;
+    }
 }
