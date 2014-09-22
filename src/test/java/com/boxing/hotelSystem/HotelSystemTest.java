@@ -10,8 +10,14 @@ public class HotelSystemTest {
     public void aRegularWithMonTuesWedBookInformation_shouldReturn_lakewood() {
         String bookInformation = "Regular: 22Sep2014(mon), 23Sep2014(tues), 24Sep2014(wed)";
         HotelSystem hotelSystem = new HotelSystem();
-        assertThat(hotelSystem.book(bookInformation), is("Lakewood"));
+        assertThat(hotelSystem.process(bookInformation), is("Lakewood"));
     }
 
+    @Test
+    public void aRegularWithFriSatSunBookInformation_shouldReturn_lakewood() {
+        String bookInformation = "Regular: 26Sep2014(fri), 27Sep2014(sat), 28Sep2014(sun)";
+        HotelSystem hotelSystem = new HotelSystem();
+        assertThat(hotelSystem.process(bookInformation), is("Bridgewood"));
+    }
 
 }
