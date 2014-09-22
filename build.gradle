@@ -1,0 +1,30 @@
+apply plugin: 'idea'
+apply plugin: "jacoco"
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.11'
+}
+
+task wrapper(type: Wrapper) {
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
+}
+
+task bookHotel (type: JavaExec) {
+    String input = project.getProperty("args")
+
+    main = "com.boxing.hotelSystem.HotelSystem"
+    args = [input]
+    classpath sourceSets.main.runtimeClasspath
+}
