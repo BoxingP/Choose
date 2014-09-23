@@ -23,10 +23,4 @@ public class HotelBookingTest {
         HotelBooking hotelBooking = new HotelBooking("Regular: 22Sep2014(mon)");
         assertThat(hotelBooking.getClientClass(),is("Regular"));
     }
-
-    @Test
-    public void aBookInformationWithDates_shouldReturn_DateArray() {
-        HotelBooking hotelBooking = new HotelBooking("Regular: 22Sep2014(mon),23Sep2014(tues)");
-        assertThat(hotelBooking.getDates(), is(new String[] {"22Sep2014(mon)","23Sep2014(tues)"}));
-    }
 }
