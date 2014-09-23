@@ -7,12 +7,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class HotelChooserTest {
-    HotelChooser hotelChooser;
-
-    @Before
-    public void initObject() {
-        hotelChooser = new HotelChooser();
-    }
 
     @Test
     public void aRegular1Weekday_shouldReturn_lakewood() {
@@ -29,7 +23,8 @@ public class HotelChooserTest {
                 return "Regular";
             }
         };
-        assertThat(hotelChooser.choose(booking), is("Lakewood"));
+        HotelChooser chooser = new HotelChooser(booking);
+        assertThat(chooser.choose(), is("Lakewood"));
     }
 
     @Test
@@ -47,7 +42,8 @@ public class HotelChooserTest {
                 return "Regular";
             }
         };
-        assertThat(hotelChooser.choose(booking), is("Lakewood"));
+        HotelChooser chooser = new HotelChooser(booking);
+        assertThat(chooser.choose(), is("Lakewood"));
     }
 
     @Test
@@ -65,7 +61,8 @@ public class HotelChooserTest {
                 return "Regular";
             }
         };
-        assertThat(hotelChooser.choose(booking), is("Bridgewood"));
+        HotelChooser chooser = new HotelChooser(booking);
+        assertThat(chooser.choose(), is("Bridgewood"));
     }
 
     @Test
@@ -83,7 +80,8 @@ public class HotelChooserTest {
                 return "Rewards";
             }
         };
-        assertThat(hotelChooser.choose(booking), is("Ridgewood"));
+        HotelChooser chooser = new HotelChooser(booking);
+        assertThat(chooser.choose(), is("Ridgewood"));
     }
 
     @Test
@@ -101,6 +99,7 @@ public class HotelChooserTest {
                 return "Regular";
             }
         };
-        assertThat(hotelChooser.choose(booking), is("Bridgewood"));
+        HotelChooser chooser = new HotelChooser(booking);
+        assertThat(chooser.choose(), is("Bridgewood"));
     }
 }

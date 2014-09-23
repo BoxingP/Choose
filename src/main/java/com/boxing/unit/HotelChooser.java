@@ -1,39 +1,64 @@
 package com.boxing.unit;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class HotelChooser {
+    private HotelBooking booking;
 
-    public String choose(HotelBooking booking) {
-        int[] hotelPrice=new int[3];
+    public HotelChooser(HotelBooking booking) {
+        this.booking = booking;
+    }
+
+
+    public String choose() {
+
+        int[] hotelPrice = getHotelPrice();
+
+        int cheapPrice = hotelPrice[0];
+        int index = 0;
+        for (int i = 0; i < hotelPrice.length; i++) {
+            if (hotelPrice[i] < cheapPrice) {
+                cheapPrice = hotelPrice[i];
+                index = i;
+            }
+            if (hotelPrice[i] == cheapPrice) {
+                index = i;
+            }
+        }
+        List<Hotel> hotelListing = getHotelListing();
+        switch (index) {
+            case 0:
+                return hotelListing.get(0).getHotelName();
+            case 1:
+                return hotelListing.get(1).getHotelName();
+            case 2:
+                return hotelListing.get(2).getHotelName();
+        }
+        return null;
+    }
+
+    private List getHotelListing() {
+        Hotel lakewood = new Hotel("Lakewood", 110, 90, 80, 80);
+        Hotel bridgewood = new Hotel("Bridgewood", 160, 60, 110, 50);
+        Hotel ridgewood = new Hotel("Ridgewood", 220, 150, 100, 40);
+        List<Hotel> hotelListing = Arrays.asList(lakewood, bridgewood, ridgewood);
+        return hotelListing;
+    }
+
+    private int[] getHotelPrice() {
+        List<Hotel> hotelListing = getHotelListing();
         PriceCalculator priceCalculator = new PriceCalculator();
-        Hotel lakewood = new Hotel("Lakewood",110,90,80,80);
-        Hotel bridgewood = new Hotel("Bridgewood",160,60,110,50);
-        Hotel ridgewood = new Hotel("Ridgewood",220,150,100,40);
-
+        int[] hotelPrice = new int[hotelListing.size()];
         String clientClass = booking.getClientClass();
         int weekdayAmount = booking.getWeekdayAmount();
         int weekendAmount = booking.getWeekendAmount();
+        int index = 0;
 
-        hotelPrice[0]=priceCalculator.calculate(clientClass,weekdayAmount,weekendAmount,lakewood);
-        hotelPrice[1]=priceCalculator.calculate(clientClass,weekdayAmount,weekendAmount,bridgewood);
-        hotelPrice[2]=priceCalculator.calculate(clientClass,weekdayAmount,weekendAmount,ridgewood);
-
-
-        int cheapPrice=hotelPrice[0];
-        int index=0;
-        for (int i=0;i<hotelPrice.length;i++) {
-            if (hotelPrice[i]<cheapPrice) {
-                cheapPrice=hotelPrice[i];
-                index=i;
-            }
-            if (hotelPrice[i]==cheapPrice) {
-                index=i;
-            }
+        for (Hotel hotel : hotelListing) {
+            hotelPrice[index] = priceCalculator.calculate(clientClass, weekdayAmount, weekendAmount, hotel);
+            index++;
         }
-        switch (index) {
-            case 0: return lakewood.getHotelName();
-            case 1: return bridgewood.getHotelName();
-            case 2: return ridgewood.getHotelName();
-        }
-        return null;
+        return hotelPrice;
     }
 }
