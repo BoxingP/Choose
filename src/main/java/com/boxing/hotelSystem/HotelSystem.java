@@ -8,11 +8,8 @@ public class HotelSystem {
     public static void main(String[] args) {
         String bookInformation = args[0];
         HotelBooking booking = new HotelBooking(bookInformation);
-        String clientClass = booking.getClientClass();
-        int weekdayAmount = booking.getWeekdayAmount();
-        int weekendAmount = booking.getWeekendAmount();
         HotelChooser chooser = new HotelChooser();
-        String result = chooser.choose(clientClass, weekdayAmount,weekendAmount);
+        String result = chooser.choose(booking);
         new PrintOutput().print(result);
     }
 }

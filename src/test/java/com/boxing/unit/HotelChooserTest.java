@@ -16,26 +16,91 @@ public class HotelChooserTest {
 
     @Test
     public void aRegular1Weekday_shouldReturn_lakewood() {
-        assertThat(hotelChooser.choose("Regular",1,0), is("Lakewood"));
+        HotelBooking booking = new HotelBooking() {
+            public int getWeekdayAmount() {
+                return 1;
+            }
+
+            public int getWeekendAmount() {
+                return 0;
+            }
+
+            public String getClientClass() {
+                return "Regular";
+            }
+        };
+        assertThat(hotelChooser.choose(booking), is("Lakewood"));
     }
 
     @Test
     public void aRewards1Weekday_shouldReturn_lakewood() {
-        assertThat(hotelChooser.choose("Rewards",1,0), is("Lakewood"));
+        HotelBooking booking = new HotelBooking() {
+            public int getWeekdayAmount() {
+                return 1;
+            }
+
+            public int getWeekendAmount() {
+                return 0;
+            }
+
+            public String getClientClass() {
+                return "Regular";
+            }
+        };
+        assertThat(hotelChooser.choose(booking), is("Lakewood"));
     }
 
     @Test
     public void aRegular1Weekend_shouldReturn_bridgewood() {
-        assertThat(hotelChooser.choose("Regular",0,1), is("Bridgewood"));
+        HotelBooking booking = new HotelBooking() {
+            public int getWeekdayAmount() {
+                return 0;
+            }
+
+            public int getWeekendAmount() {
+                return 1;
+            }
+
+            public String getClientClass() {
+                return "Regular";
+            }
+        };
+        assertThat(hotelChooser.choose(booking), is("Bridgewood"));
     }
 
     @Test
     public void aRewards1Weekend_shouldReturn_ridgewood() {
-        assertThat(hotelChooser.choose("Rewards",0,1), is("Ridgewood"));
+        HotelBooking booking = new HotelBooking() {
+            public int getWeekdayAmount() {
+                return 0;
+            }
+
+            public int getWeekendAmount() {
+                return 1;
+            }
+
+            public String getClientClass() {
+                return "Rewards";
+            }
+        };
+        assertThat(hotelChooser.choose(booking), is("Ridgewood"));
     }
 
     @Test
     public void aRegular3Weekday5Weekend_shouldReturn_Bridgewood() {
-        assertThat(hotelChooser.choose("Regular",3,5), is("Bridgewood"));
+        HotelBooking booking = new HotelBooking() {
+            public int getWeekdayAmount() {
+                return 3;
+            }
+
+            public int getWeekendAmount() {
+                return 5;
+            }
+
+            public String getClientClass() {
+                return "Regular";
+            }
+        };
+        assertThat(hotelChooser.choose(booking), is("Bridgewood"));
     }
 }

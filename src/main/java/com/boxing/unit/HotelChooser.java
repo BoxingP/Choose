@@ -1,12 +1,17 @@
 package com.boxing.unit;
 
 public class HotelChooser {
-    public String choose(String clientClass, int weekdayAmount, int weekendAmount) {
+
+    public String choose(HotelBooking booking) {
         int[] hotelPrice=new int[3];
         PriceCalculator priceCalculator = new PriceCalculator();
         Hotel lakewood = new Hotel("Lakewood",110,90,80,80);
         Hotel bridgewood = new Hotel("Bridgewood",160,60,110,50);
         Hotel ridgewood = new Hotel("Ridgewood",220,150,100,40);
+
+        String clientClass = booking.getClientClass();
+        int weekdayAmount = booking.getWeekdayAmount();
+        int weekendAmount = booking.getWeekendAmount();
 
         hotelPrice[0]=priceCalculator.calculate(clientClass,weekdayAmount,weekendAmount,lakewood);
         hotelPrice[1]=priceCalculator.calculate(clientClass,weekdayAmount,weekendAmount,bridgewood);

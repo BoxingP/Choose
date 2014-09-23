@@ -4,6 +4,8 @@ public class HotelBooking {
     private String clientClass;
     private String[] dates;
 
+    public HotelBooking() {}
+
     public HotelBooking(String bookInformation) {
         divideInformation(bookInformation);
     }
