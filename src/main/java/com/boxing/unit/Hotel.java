@@ -7,6 +7,8 @@ public class Hotel {
     private int rewardsWeekdayUnitPrice;
     private int rewardsWeekendUnitPrice;
 
+    public Hotel() {}
+
     public Hotel(String hotelName, int regularWeekdayUnitPrice, int regularWeekendUnitPrice, int rewardsWeekdayUnitPrice, int rewardsWeekendUnitPrice) {
         this.hotelName = hotelName;
         this.regularWeekdayUnitPrice = regularWeekdayUnitPrice;

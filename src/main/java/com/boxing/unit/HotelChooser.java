@@ -4,9 +4,13 @@ public class HotelChooser {
     public String choose(String clientClass, int weekdayAmount, int weekendAmount) {
         int[] hotelPrice=new int[3];
         PriceCalculator priceCalculator = new PriceCalculator();
-        hotelPrice[0]=priceCalculator.calculate(clientClass,weekdayAmount,weekendAmount,"LAKEWOOD");
-        hotelPrice[1]=priceCalculator.calculate(clientClass,weekdayAmount,weekendAmount,"BRIDGEWOOD");
-        hotelPrice[2]=priceCalculator.calculate(clientClass,weekdayAmount,weekendAmount,"RIDGEWOOD");
+        Hotel lakewood = new Hotel("Lakewood",110,90,80,80);
+        Hotel bridgewood = new Hotel("Bridgewood",160,60,110,50);
+        Hotel ridgewood = new Hotel("Ridgewood",220,150,100,40);
+
+        hotelPrice[0]=priceCalculator.calculate(clientClass,weekdayAmount,weekendAmount,lakewood);
+        hotelPrice[1]=priceCalculator.calculate(clientClass,weekdayAmount,weekendAmount,bridgewood);
+        hotelPrice[2]=priceCalculator.calculate(clientClass,weekdayAmount,weekendAmount,ridgewood);
 
 
         int cheapPrice=hotelPrice[0];
@@ -21,9 +25,9 @@ public class HotelChooser {
             }
         }
         switch (index) {
-            case 0: return "Lakewood";
-            case 1: return "Bridgewood";
-            case 2: return "Ridgewood";
+            case 0: return lakewood.getHotelName();
+            case 1: return bridgewood.getHotelName();
+            case 2: return ridgewood.getHotelName();
         }
         return null;
     }
