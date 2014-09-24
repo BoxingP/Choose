@@ -4,7 +4,8 @@ public class HotelBooking {
     private String clientClass;
     private String[] dates;
 
-    public HotelBooking() {}
+    public HotelBooking() {
+    }
 
     public HotelBooking(String bookInformation) {
         divideInformation(bookInformation);
@@ -15,15 +16,15 @@ public class HotelBooking {
     }
 
     public int getWeekdayAmount() {
-        int weekdayAmount=0;
-        for (String date:dates) {
+        int weekdayAmount = 0;
+        for (String date : dates) {
             if (isWeekday(date)) weekdayAmount++;
         }
         return weekdayAmount;
     }
 
     public int getWeekendAmount() {
-        return dates.length-getWeekdayAmount();
+        return dates.length - getWeekdayAmount();
     }
 
     private void divideInformation(String bookInformation) {

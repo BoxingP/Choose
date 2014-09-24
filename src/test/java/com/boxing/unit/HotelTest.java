@@ -7,35 +7,27 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class HotelTest {
-    Hotel hotel;
 
-    @Before
-    public void initObject() {
-        hotel = new Hotel("Lakewood",110,90,80,80);
+    @Test
+    public void nameIsAbc_shouldReturn_lakewood() {
+        assertThat(new Hotel("Abc").getHotelName(), is("Abc"));
     }
 
     @Test
-    public void nameIsLakewood_shouldReturn_lakewood() {
-        assertThat(hotel.getHotelName(), is("Lakewood"));
-    }
+    public void bookingIsRegularWith1Weekday_shouldReturn_110() {
+        HotelBooking booking = new HotelBooking() {
+            public int getWeekdayAmount() {
+                return 1;
+            }
 
-    @Test
-    public void regularWeekdayUnitPriceIs110_shouldReturn_110() {
-        assertThat(hotel.getRegularWeekdayUnitPrice(), is(110));
-    }
+            public int getWeekendAmount() {
+                return 0;
+            }
 
-    @Test
-    public void regularWeekendUnitPriceIs90_shouldReturn_90() {
-        assertThat(hotel.getRegularWeekendUnitPrice(), is(90));
-    }
-
-    @Test
-    public void rewardsWeekdayUnitPriceIs80_shouldReturn_80() {
-        assertThat(hotel.getRewardsWeekdayUnitPrice(), is(80));
-    }
-
-    @Test
-    public void rewardsWeekendUnitPriceIs80_shouldReturn_80() {
-        assertThat(hotel.getRewardsWeekendUnitPrice(), is(80));
+            public String getClientClass() {
+                return "Regular";
+            }
+        };
+        assertThat(new Hotel("Lakewood",110,90,80,80,booking).getPrice(), is(110));
     }
 }

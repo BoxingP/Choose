@@ -10,55 +10,43 @@ public class HotelChooser {
         this.booking = booking;
     }
 
-
     public String choose() {
 
-        int[] hotelPrice = getHotelPrice();
+        List<Integer> hotelPrice = getHotelPrice();
 
-        int cheapPrice = hotelPrice[0];
+        int cheapPrice = hotelPrice.get(0);
         int index = 0;
-        for (int i = 0; i < hotelPrice.length; i++) {
-            if (hotelPrice[i] < cheapPrice) {
-                cheapPrice = hotelPrice[i];
+        for (int i = 0; i < hotelPrice.size(); i++) {
+            if (hotelPrice.get(i) < cheapPrice) {
+                cheapPrice = hotelPrice.get(i);
                 index = i;
             }
-            if (hotelPrice[i] == cheapPrice) {
+            if (hotelPrice.get(i) == cheapPrice) {
                 index = i;
             }
         }
-        List<Hotel> hotelListing = getHotelListing();
         switch (index) {
             case 0:
-                return hotelListing.get(0).getHotelName();
+                return "Lakewood";
             case 1:
-                return hotelListing.get(1).getHotelName();
+                return "Bridgewood";
             case 2:
-                return hotelListing.get(2).getHotelName();
+                return "Ridgewood";
         }
         return null;
     }
 
-    private List getHotelListing() {
-        Hotel lakewood = new Hotel("Lakewood", 110, 90, 80, 80);
-        Hotel bridgewood = new Hotel("Bridgewood", 160, 60, 110, 50);
-        Hotel ridgewood = new Hotel("Ridgewood", 220, 150, 100, 40);
-        List<Hotel> hotelListing = Arrays.asList(lakewood, bridgewood, ridgewood);
-        return hotelListing;
+    private List<Hotel> creatHotelListing() {
+        Hotel lakewood = new Hotel("Lakewood", 110, 90, 80, 80, booking);
+        Hotel bridgewood = new Hotel("Bridgewood", 160, 60, 110, 50, booking);
+        Hotel ridgewood = new Hotel("Ridgewood", 220, 150, 100, 40, booking);
+        return Arrays.asList(lakewood,bridgewood,ridgewood);
     }
 
-    private int[] getHotelPrice() {
-        List<Hotel> hotelListing = getHotelListing();
-        PriceCalculator priceCalculator = new PriceCalculator();
-        int[] hotelPrice = new int[hotelListing.size()];
-        String clientClass = booking.getClientClass();
-        int weekdayAmount = booking.getWeekdayAmount();
-        int weekendAmount = booking.getWeekendAmount();
-        int index = 0;
-
-        for (Hotel hotel : hotelListing) {
-            hotelPrice[index] = priceCalculator.calculate(clientClass, weekdayAmount, weekendAmount, hotel);
-            index++;
-        }
+    private List getHotelPrice() {
+        List<Hotel> hotelListing = creatHotelListing();
+        List<Integer> hotelPrice = Arrays.asList(hotelListing.get(0).getPrice(), hotelListing.get(1).getPrice(), hotelListing.get(2).getPrice());
         return hotelPrice;
     }
+
 }
