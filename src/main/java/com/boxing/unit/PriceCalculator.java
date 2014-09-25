@@ -2,14 +2,10 @@ package com.boxing.unit;
 
 public class PriceCalculator {
 
-    public int calculate(String clientClass, int weekdayAmount, int weekendAmount, int regularWeekdayUnitPrice, int regularWeekendUnitPrice, int rewardsWeekdayUnitPrice, int rewardsWeekendUnitPrice) {
+    public int calculate(String clientClass, int weekdayAmount, int weekendAmount, Price unitPrice) {
         int price = 0;
-        if (clientClass.equals("Regular")) {
-            price = regularWeekdayUnitPrice * weekdayAmount + regularWeekendUnitPrice * weekendAmount;
-        }
-        if (clientClass.equals("Rewards")) {
-            price = rewardsWeekdayUnitPrice * weekdayAmount + rewardsWeekendUnitPrice * weekendAmount;
-        }
+        price = unitPrice.getWeekday(clientClass) * weekdayAmount + unitPrice.getWeekend(clientClass) * weekendAmount;
         return price;
     }
+
 }

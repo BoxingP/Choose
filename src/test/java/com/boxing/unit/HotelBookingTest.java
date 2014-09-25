@@ -21,6 +21,6 @@ public class HotelBookingTest {
     @Test
     public void aBookInformationWithRegular_shouldReturn_Regular() {
         HotelBooking hotelBooking = new HotelBooking("Regular: 22Sep2014(mon)");
-        assertThat(hotelBooking.getClientClass(),is("Regular"));
+        assertThat(hotelBooking.getClientLevel(),is("Regular"));
     }
 }

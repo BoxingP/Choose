@@ -1,17 +1,11 @@
 package com.boxing.unit;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class HotelTest {
-
-    @Test
-    public void nameIsAbc_shouldReturn_lakewood() {
-        assertThat(new Hotel("Abc").getHotelName(), is("Abc"));
-    }
 
     @Test
     public void bookingIsRegularWith1Weekday_shouldReturn_110() {
@@ -24,10 +18,10 @@ public class HotelTest {
                 return 0;
             }
 
-            public String getClientClass() {
+            public String getClientLevel() {
                 return "Regular";
             }
         };
-        assertThat(new Hotel("Lakewood",110,90,80,80,booking).getPrice(), is(110));
+        assertThat(new Hotel(booking, new Price(110, 90, 80, 80)).getPrice(), is(110));
     }
 }

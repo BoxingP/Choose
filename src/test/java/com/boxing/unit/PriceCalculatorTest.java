@@ -12,6 +12,7 @@ public class PriceCalculatorTest {
         int regularWeekendUnitPrice=100;
         int rewardsWeekdayUnitPrice=90;
         int rewardsWeekendUnitPrice=80;
-        assertThat(new PriceCalculator().calculate("Regular", 1, 0, regularWeekdayUnitPrice, regularWeekendUnitPrice, rewardsWeekdayUnitPrice, rewardsWeekendUnitPrice), is(110));
+        Price price = new Price(110, 100, 90, 80);
+        assertThat(new PriceCalculator().calculate("Regular", 1, 0, price), is(110));
     }
 }

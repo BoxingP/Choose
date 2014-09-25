@@ -1,7 +1,7 @@
 package com.boxing.unit;
 
 public class HotelBooking {
-    private String clientClass;
+    private String clientLevel;
     private String[] dates;
 
     public HotelBooking() {
@@ -11,8 +11,8 @@ public class HotelBooking {
         divideInformation(bookInformation);
     }
 
-    public String getClientClass() {
-        return clientClass;
+    public String getClientLevel() {
+        return clientLevel;
     }
 
     public int getWeekdayAmount() {
@@ -29,7 +29,7 @@ public class HotelBooking {
 
     private void divideInformation(String bookInformation) {
         String[] information = bookInformation.split(": ");
-        clientClass = information[0];
+        clientLevel = information[0];
         dates = information[1].split(",");
     }
 

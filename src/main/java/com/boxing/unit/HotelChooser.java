@@ -1,18 +1,17 @@
 package com.boxing.unit;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HotelChooser {
-    private HotelBooking booking;
 
-    public HotelChooser(HotelBooking booking) {
-        this.booking = booking;
-    }
+    public String choose(List<Hotel> hotelListing) {
 
-    public String choose() {
-
-        List<Integer> hotelPrice = getHotelPrice();
+        List<Integer> hotelPrice=new ArrayList<Integer>();
+        for (Hotel hotel:hotelListing) {
+            int totalPrice= hotel.getPrice();
+            hotelPrice.add(totalPrice);
+        }
 
         int cheapPrice = hotelPrice.get(0);
         int index = 0;
@@ -34,19 +33,6 @@ public class HotelChooser {
                 return "Ridgewood";
         }
         return null;
-    }
-
-    private List<Hotel> creatHotelListing() {
-        Hotel lakewood = new Hotel("Lakewood", 110, 90, 80, 80, booking);
-        Hotel bridgewood = new Hotel("Bridgewood", 160, 60, 110, 50, booking);
-        Hotel ridgewood = new Hotel("Ridgewood", 220, 150, 100, 40, booking);
-        return Arrays.asList(lakewood,bridgewood,ridgewood);
-    }
-
-    private List getHotelPrice() {
-        List<Hotel> hotelListing = creatHotelListing();
-        List<Integer> hotelPrice = Arrays.asList(hotelListing.get(0).getPrice(), hotelListing.get(1).getPrice(), hotelListing.get(2).getPrice());
-        return hotelPrice;
     }
 
 }
