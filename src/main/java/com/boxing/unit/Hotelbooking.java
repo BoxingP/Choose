@@ -1,15 +1,15 @@
 package com.boxing.unit;
 
 public class HotelBooking {
-    private String clientLevel;
+    private String customerType;
     private String[] dates;
 
     public HotelBooking(String bookInformation) {
         divideInformation(bookInformation);
     }
 
-    public ClientLevel getClientLevel() {
-        return clientLevel.toUpperCase().equals(ClientLevel.REWARDS.name()) ? ClientLevel.REWARDS : ClientLevel.REGULAR;
+    public CustomerType getCustomerType() {
+        return customerType.toUpperCase().equals(CustomerType.REWARDS.name()) ? CustomerType.REWARDS : CustomerType.REGULAR;
     }
 
     public int getWeekdayAmount() {
@@ -26,7 +26,7 @@ public class HotelBooking {
 
     private void divideInformation(String bookInformation) {
         String[] information = bookInformation.split(": ");
-        clientLevel = information[0];
+        customerType = information[0];
         dates = information[1].split(",");
     }
 

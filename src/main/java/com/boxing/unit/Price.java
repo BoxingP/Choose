@@ -14,21 +14,21 @@ public class Price {
     }
 
     public int getTotalPrice(HotelBooking booking) {
-        ClientLevel clientLevel = booking.getClientLevel();
+        CustomerType customerType = booking.getCustomerType();
         int weekdayAmount = booking.getWeekdayAmount();
         int weekendAmount = booking.getWeekendAmount();
-        return getWeekdayUnitPrice(clientLevel) * weekdayAmount + getWeekendUnitPrice(clientLevel) * weekendAmount;
+        return getWeekdayUnitPrice(customerType) * weekdayAmount + getWeekendUnitPrice(customerType) * weekendAmount;
     }
 
-    private int getWeekdayUnitPrice(ClientLevel clientLevel) {
-        return isRewards(clientLevel) ? rewardsWeekdayUnitPrice : regularWeekdayUnitPrice;
+    private int getWeekdayUnitPrice(CustomerType customerType) {
+        return isRewards(customerType) ? rewardsWeekdayUnitPrice : regularWeekdayUnitPrice;
     }
 
-    private int getWeekendUnitPrice(ClientLevel clientLevel) {
-        return isRewards(clientLevel) ? rewardsWeekendUnitPrice : regularWeekendUnitPrice;
+    private int getWeekendUnitPrice(CustomerType customerType) {
+        return isRewards(customerType) ? rewardsWeekendUnitPrice : regularWeekendUnitPrice;
     }
 
-    private boolean isRewards(ClientLevel clientLevel) {
-        return clientLevel==ClientLevel.REWARDS;
+    private boolean isRewards(CustomerType customerType) {
+        return customerType == CustomerType.REWARDS;
     }
 }

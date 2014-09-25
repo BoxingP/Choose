@@ -1,5 +1,5 @@
 package com.boxing.unit;
 
-public enum ClientLevel {
+public enum CustomerType {
     REGULAR, REWARDS
 }
