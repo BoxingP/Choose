@@ -8,10 +8,6 @@ import static org.hamcrest.core.Is.is;
 public class PriceCalculatorTest {
     @Test
     public void aRegularWith1Weekday_shouldReturn_110() {
-        int regularWeekdayUnitPrice=110;
-        int regularWeekendUnitPrice=100;
-        int rewardsWeekdayUnitPrice=90;
-        int rewardsWeekendUnitPrice=80;
         Price price = new Price(110, 100, 90, 80);
         assertThat(new PriceCalculator().calculate("Regular", 1, 0, price), is(110));
     }

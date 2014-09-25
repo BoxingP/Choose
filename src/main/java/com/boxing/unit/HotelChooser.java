@@ -24,15 +24,6 @@ public class HotelChooser {
                 index = i;
             }
         }
-        switch (index) {
-            case 0:
-                return "Lakewood";
-            case 1:
-                return "Bridgewood";
-            case 2:
-                return "Ridgewood";
-        }
-        return null;
+        return hotelListing.get(index).getHotelName();
     }
-
 }

@@ -22,6 +22,6 @@ public class HotelTest {
                 return "Regular";
             }
         };
-        assertThat(new Hotel(booking, new Price(110, 90, 80, 80)).getPrice(), is(110));
+        assertThat(new Hotel(booking, "A", new Price(110, 90, 80, 80)).getPrice(), is(110));
     }
 }

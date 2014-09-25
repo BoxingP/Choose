@@ -32,6 +32,9 @@ public class HotelChooserTest {
         when(mockLakewood.getPrice()).thenReturn(1);
         when(mockBridgewood.getPrice()).thenReturn(2);
         when(mockRidgewood.getPrice()).thenReturn(2);
+        when(mockLakewood.getHotelName()).thenReturn("Lakewood");
+        when(mockBridgewood.getHotelName()).thenReturn("Bridgewood");
+        when(mockRidgewood.getHotelName()).thenReturn("Ridgewood");
         assertThat(chooser.choose(hotelListing), is("Lakewood"));
     }
 
@@ -40,6 +43,9 @@ public class HotelChooserTest {
         when(mockLakewood.getPrice()).thenReturn(3);
         when(mockBridgewood.getPrice()).thenReturn(2);
         when(mockRidgewood.getPrice()).thenReturn(2);
+        when(mockLakewood.getHotelName()).thenReturn("Lakewood");
+        when(mockBridgewood.getHotelName()).thenReturn("Bridgewood");
+        when(mockRidgewood.getHotelName()).thenReturn("Ridgewood");
         assertThat(chooser.choose(hotelListing), is("Ridgewood"));
     }
 }

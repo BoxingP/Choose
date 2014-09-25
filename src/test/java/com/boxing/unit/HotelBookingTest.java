@@ -23,4 +23,8 @@ public class HotelBookingTest {
         HotelBooking hotelBooking = new HotelBooking("Regular: 22Sep2014(mon)");
         assertThat(hotelBooking.getClientLevel(),is("Regular"));
     }
+
+
+
+
 }
