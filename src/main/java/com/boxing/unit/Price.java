@@ -29,7 +29,7 @@ public class Price {
     }
 
     private boolean isRewards(String clientLevel) {
-        return clientLevel.equals("Rewards");
+        return clientLevel.toUpperCase().equals(ClientLevel.REWARDS.name());
     }
 
 }
