@@ -1,0 +1,7 @@
+.gradle/
+.idea/
+Choose.iml
+Choose.ipr
+Choose.iws
+build/
+out/

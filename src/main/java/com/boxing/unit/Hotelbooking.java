@@ -4,9 +4,6 @@ public class HotelBooking {
     private String clientLevel;
     private String[] dates;
 
-    public HotelBooking() {
-    }
-
     public HotelBooking(String bookInformation) {
         divideInformation(bookInformation);
     }

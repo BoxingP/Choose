@@ -1,29 +1,24 @@
 package com.boxing.unit;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HotelChooser {
 
-    public String choose(List<Hotel> hotelListing, HotelBooking booking) {
+    public String choose(List<Hotel> hotelList, HotelBooking booking) {
 
-        List<Integer> hotelPrice=new ArrayList<Integer>();
-        for (Hotel hotel:hotelListing) {
-            int totalPrice= hotel.getPrice(booking);
-            hotelPrice.add(totalPrice);
-        }
+        String hotelName = hotelList.get(0).getHotelName();
+        int minimumTotalPrice = hotelList.get(0).getPrice(booking);
 
-        int cheapPrice = hotelPrice.get(0);
-        int index = 0;
-        for (int i = 0; i < hotelPrice.size(); i++) {
-            if (hotelPrice.get(i) < cheapPrice) {
-                cheapPrice = hotelPrice.get(i);
-                index = i;
+        for (Hotel hotel : hotelList) {
+            int totalPrice = hotel.getPrice(booking);
+            if (totalPrice < minimumTotalPrice) {
+                minimumTotalPrice = totalPrice;
+                hotelName = hotel.getHotelName();
             }
-            if (hotelPrice.get(i) == cheapPrice) {
-                index = i;
+            if (totalPrice == minimumTotalPrice) {
+                hotelName = hotel.getHotelName();
             }
         }
-        return hotelListing.get(index).getHotelName();
+        return hotelName;
     }
 }
