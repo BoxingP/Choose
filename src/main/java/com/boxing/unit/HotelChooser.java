@@ -4,21 +4,18 @@ import java.util.List;
 
 public class HotelChooser {
 
-    public String choose(List<Hotel> hotelList, HotelBooking booking) {
+    public Hotel choose(List<Hotel> hotelList, HotelBooking booking) {
 
-        String hotelName = hotelList.get(0).getHotelName();
-        int minimumTotalPrice = hotelList.get(0).getPrice(booking);
+        Hotel hotel = hotelList.get(0);
+        int minimumTotalPrice = hotel.getPrice(booking);
 
-        for (Hotel hotel : hotelList) {
-            int totalPrice = hotel.getPrice(booking);
-            if (totalPrice < minimumTotalPrice) {
+        for (Hotel aHotel : hotelList) {
+            int totalPrice = aHotel.getPrice(booking);
+            if (totalPrice < minimumTotalPrice || totalPrice == minimumTotalPrice) {
                 minimumTotalPrice = totalPrice;
-                hotelName = hotel.getHotelName();
-            }
-            if (totalPrice == minimumTotalPrice) {
-                hotelName = hotel.getHotelName();
+                hotel = aHotel;
             }
         }
-        return hotelName;
+        return hotel;
     }
 }

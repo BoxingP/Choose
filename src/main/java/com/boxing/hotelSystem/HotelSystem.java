@@ -14,6 +14,7 @@ public class HotelSystem {
         Hotel bridgewood = new Hotel("Bridgewood", new Price(160, 60, 110, 50));
         Hotel ridgewood = new Hotel("Ridgewood", new Price(220, 150, 100, 40));
         List<Hotel> hotelListing= Arrays.asList(lakewood, bridgewood, ridgewood);
-        System.out.println(chooser.choose(hotelListing, booking));
+        Hotel chosenHotel=chooser.choose(hotelListing, booking);
+        System.out.println(chosenHotel.getHotelName());
     }
 }

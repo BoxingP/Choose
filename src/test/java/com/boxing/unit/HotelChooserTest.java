@@ -13,39 +13,35 @@ import static org.mockito.Mockito.when;
 
 public class HotelChooserTest {
     HotelChooser chooser;
+    Hotel mockHotelA;
+    Hotel mockHotelB;
     List<Hotel> hotelListing;
-    Hotel mockLakewood;
-    Hotel mockBridgewood;
-    Hotel mockRidgewood;
+    HotelBooking booking;
 
     @Before
     public void initObject() {
         chooser = new HotelChooser();
-        mockLakewood = mock(Hotel.class);
-        mockBridgewood = mock(Hotel.class);
-        mockRidgewood = mock(Hotel.class);
-        hotelListing = Arrays.asList(mockLakewood, mockBridgewood, mockRidgewood);
+        mockHotelA = mock(Hotel.class);
+        mockHotelB = mock(Hotel.class);
+        hotelListing = Arrays.asList(mockHotelA, mockHotelB);
+        booking = mock(HotelBooking.class);
     }
 
     @Test
     public void ShouldLakewoodIsCheap_return_lakewood() {
-        when(mockLakewood.getPrice(null)).thenReturn(1);
-        when(mockBridgewood.getPrice(null)).thenReturn(2);
-        when(mockRidgewood.getPrice(null)).thenReturn(2);
-        when(mockLakewood.getHotelName()).thenReturn("Lakewood");
-        when(mockBridgewood.getHotelName()).thenReturn("Bridgewood");
-        when(mockRidgewood.getHotelName()).thenReturn("Ridgewood");
-        assertThat(chooser.choose(hotelListing, null), is("Lakewood"));
+        when(mockHotelA.getPrice(booking)).thenReturn(1);
+        when(mockHotelB.getPrice(booking)).thenReturn(2);
+        when(mockHotelA.getHotelName()).thenReturn("mockHotelA");
+        when(mockHotelB.getHotelName()).thenReturn("mockHotelB");
+        assertThat(chooser.choose(hotelListing, booking), is(mockHotelA));
     }
 
     @Test
     public void ShouldRidgewoodRatingIsHigh_return_ridgewood() {
-        when(mockLakewood.getPrice(null)).thenReturn(3);
-        when(mockBridgewood.getPrice(null)).thenReturn(2);
-        when(mockRidgewood.getPrice(null)).thenReturn(2);
-        when(mockLakewood.getHotelName()).thenReturn("Lakewood");
-        when(mockBridgewood.getHotelName()).thenReturn("Bridgewood");
-        when(mockRidgewood.getHotelName()).thenReturn("Ridgewood");
-        assertThat(chooser.choose(hotelListing, null), is("Ridgewood"));
+        when(mockHotelA.getPrice(booking)).thenReturn(1);
+        when(mockHotelB.getPrice(booking)).thenReturn(1);
+        when(mockHotelA.getHotelName()).thenReturn("Lakewood");
+        when(mockHotelB.getHotelName()).thenReturn("Bridgewood");
+        assertThat(chooser.choose(hotelListing, booking), is(mockHotelB));
     }
 }
