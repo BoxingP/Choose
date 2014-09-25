@@ -14,22 +14,21 @@ public class Price {
     }
 
     public int getTotalPrice(HotelBooking booking) {
-        String clientLevel = booking.getClientLevel();
+        ClientLevel clientLevel = booking.getClientLevel();
         int weekdayAmount = booking.getWeekdayAmount();
         int weekendAmount = booking.getWeekendAmount();
         return getWeekdayUnitPrice(clientLevel) * weekdayAmount + getWeekendUnitPrice(clientLevel) * weekendAmount;
     }
 
-    private int getWeekdayUnitPrice(String clientLevel) {
+    private int getWeekdayUnitPrice(ClientLevel clientLevel) {
         return isRewards(clientLevel) ? rewardsWeekdayUnitPrice : regularWeekdayUnitPrice;
     }
 
-    private int getWeekendUnitPrice(String clientLevel) {
+    private int getWeekendUnitPrice(ClientLevel clientLevel) {
         return isRewards(clientLevel) ? rewardsWeekendUnitPrice : regularWeekendUnitPrice;
     }
 
-    private boolean isRewards(String clientLevel) {
-        return clientLevel.toUpperCase().equals(ClientLevel.REWARDS.name());
+    private boolean isRewards(ClientLevel clientLevel) {
+        return clientLevel==ClientLevel.REWARDS;
     }
-
 }

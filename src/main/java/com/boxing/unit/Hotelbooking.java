@@ -8,8 +8,8 @@ public class HotelBooking {
         divideInformation(bookInformation);
     }
 
-    public String getClientLevel() {
-        return clientLevel;
+    public ClientLevel getClientLevel() {
+        return clientLevel.toUpperCase().equals(ClientLevel.REWARDS.name()) ? ClientLevel.REWARDS : ClientLevel.REGULAR;
     }
 
     public int getWeekdayAmount() {

@@ -19,9 +19,10 @@ public class PriceTest {
     @Test
     public void shouldRegularIn1Weekday_return_110() {
         HotelBooking mockBooking = mock(HotelBooking.class);
-        when(mockBooking.getClientLevel()).thenReturn("Regular");
+        when(mockBooking.getClientLevel()).thenReturn(ClientLevel.REGULAR);
         when(mockBooking.getWeekdayAmount()).thenReturn(1);
         when(mockBooking.getWeekendAmount()).thenReturn(0);
+
         assertThat(price.getTotalPrice(mockBooking), is(110));
     }
 }

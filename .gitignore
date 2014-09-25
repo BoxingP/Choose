@@ -5,3 +5,5 @@ Choose.ipr
 Choose.iws
 build/
 out/
+src/.DS_Store
+src/main/java/.DS_Store

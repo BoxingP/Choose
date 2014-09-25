@@ -12,7 +12,7 @@ public class HotelTest {
     @Test
     public void bookingIsRegularWith1Weekday_shouldReturn_110() {
         HotelBooking mockBooking = mock(HotelBooking.class);
-        when(mockBooking.getClientLevel()).thenReturn("Regular");
+        when(mockBooking.getClientLevel()).thenReturn(ClientLevel.REGULAR);
         when(mockBooking.getWeekdayAmount()).thenReturn(1);
         when(mockBooking.getWeekendAmount()).thenReturn(0);
         assertThat(new Hotel("A", new Price(110, 90, 80, 80)).getPrice(mockBooking), is(110));
