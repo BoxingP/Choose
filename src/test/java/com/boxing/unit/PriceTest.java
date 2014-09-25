@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class PriceTest {
     Price price;
@@ -15,22 +17,11 @@ public class PriceTest {
     }
 
     @Test
-    public void shouldRegularInWeekday_return_110() {
-        assertThat(price.getWeekday("Regular"), is(110));
-    }
-
-    @Test
-    public void shouldRegularInWeekend_return_100() {
-        assertThat(price.getWeekend("Regular"), is(100));
-    }
-
-    @Test
-    public void shouldRewardsInWeekday_return_90() {
-        assertThat(price.getWeekday("Rewards"), is(90));
-    }
-
-    @Test
-    public void shouldRewardsInWeekend_return_80() {
-        assertThat(price.getWeekend("Rewards"), is(80));
+    public void shouldRegularIn1Weekday_return_110() {
+        HotelBooking mockBooking = mock(HotelBooking.class);
+        when(mockBooking.getClientLevel()).thenReturn("Regular");
+        when(mockBooking.getWeekdayAmount()).thenReturn(1);
+        when(mockBooking.getWeekendAmount()).thenReturn(0);
+        assertThat(price.getTotalPrice(mockBooking), is(110));
     }
 }

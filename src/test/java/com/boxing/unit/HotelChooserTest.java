@@ -21,31 +21,31 @@ public class HotelChooserTest {
     @Before
     public void initObject() {
         chooser = new HotelChooser();
-        mockLakewood=mock(Hotel.class);
-        mockBridgewood=mock(Hotel.class);
-        mockRidgewood=mock(Hotel.class);
-        hotelListing = Arrays.asList(mockLakewood,mockBridgewood,mockRidgewood);
+        mockLakewood = mock(Hotel.class);
+        mockBridgewood = mock(Hotel.class);
+        mockRidgewood = mock(Hotel.class);
+        hotelListing = Arrays.asList(mockLakewood, mockBridgewood, mockRidgewood);
     }
 
     @Test
     public void ShouldLakewoodIsCheap_return_lakewood() {
-        when(mockLakewood.getPrice()).thenReturn(1);
-        when(mockBridgewood.getPrice()).thenReturn(2);
-        when(mockRidgewood.getPrice()).thenReturn(2);
+        when(mockLakewood.getPrice(null)).thenReturn(1);
+        when(mockBridgewood.getPrice(null)).thenReturn(2);
+        when(mockRidgewood.getPrice(null)).thenReturn(2);
         when(mockLakewood.getHotelName()).thenReturn("Lakewood");
         when(mockBridgewood.getHotelName()).thenReturn("Bridgewood");
         when(mockRidgewood.getHotelName()).thenReturn("Ridgewood");
-        assertThat(chooser.choose(hotelListing), is("Lakewood"));
+        assertThat(chooser.choose(hotelListing, null), is("Lakewood"));
     }
 
     @Test
     public void ShouldRidgewoodRatingIsHigh_return_ridgewood() {
-        when(mockLakewood.getPrice()).thenReturn(3);
-        when(mockBridgewood.getPrice()).thenReturn(2);
-        when(mockRidgewood.getPrice()).thenReturn(2);
+        when(mockLakewood.getPrice(null)).thenReturn(3);
+        when(mockBridgewood.getPrice(null)).thenReturn(2);
+        when(mockRidgewood.getPrice(null)).thenReturn(2);
         when(mockLakewood.getHotelName()).thenReturn("Lakewood");
         when(mockBridgewood.getHotelName()).thenReturn("Bridgewood");
         when(mockRidgewood.getHotelName()).thenReturn("Ridgewood");
-        assertThat(chooser.choose(hotelListing), is("Ridgewood"));
+        assertThat(chooser.choose(hotelListing, null), is("Ridgewood"));
     }
 }

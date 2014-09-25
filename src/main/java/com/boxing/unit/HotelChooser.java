@@ -5,11 +5,11 @@ import java.util.List;
 
 public class HotelChooser {
 
-    public String choose(List<Hotel> hotelListing) {
+    public String choose(List<Hotel> hotelListing, HotelBooking booking) {
 
         List<Integer> hotelPrice=new ArrayList<Integer>();
         for (Hotel hotel:hotelListing) {
-            int totalPrice= hotel.getPrice();
+            int totalPrice= hotel.getPrice(booking);
             hotelPrice.add(totalPrice);
         }
 
