@@ -29,19 +29,23 @@ public class HotelChooserTest {
 
     @Test
     public void ShouldLakewoodIsCheap_return_lakewood() {
-        when(mockHotelA.getPrice(booking)).thenReturn(1);
-        when(mockHotelB.getPrice(booking)).thenReturn(2);
         when(mockHotelA.getHotelName()).thenReturn("mockHotelA");
         when(mockHotelB.getHotelName()).thenReturn("mockHotelB");
+        when(mockHotelA.getPrice(booking)).thenReturn(1);
+        when(mockHotelB.getPrice(booking)).thenReturn(2);
+        when(mockHotelA.getRating()).thenReturn(1);
+        when(mockHotelB.getRating()).thenReturn(1);
         assertThat(chooser.choose(hotelListing, booking), is(mockHotelA));
     }
 
     @Test
     public void ShouldRidgewoodRatingIsHigh_return_ridgewood() {
-        when(mockHotelA.getPrice(booking)).thenReturn(1);
-        when(mockHotelB.getPrice(booking)).thenReturn(1);
         when(mockHotelA.getHotelName()).thenReturn("Lakewood");
         when(mockHotelB.getHotelName()).thenReturn("Bridgewood");
+        when(mockHotelA.getPrice(booking)).thenReturn(1);
+        when(mockHotelB.getPrice(booking)).thenReturn(1);
+        when(mockHotelA.getRating()).thenReturn(1);
+        when(mockHotelB.getRating()).thenReturn(2);
         assertThat(chooser.choose(hotelListing, booking), is(mockHotelB));
     }
 }

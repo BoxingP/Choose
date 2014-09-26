@@ -8,12 +8,14 @@ public class HotelChooser {
 
         Hotel hotel = hotelList.get(0);
         int minimumTotalPrice = hotel.getPrice(booking);
+        int hotelRating = hotel.getRating();
 
         for (Hotel aHotel : hotelList) {
             int totalPrice = aHotel.getPrice(booking);
-            if (totalPrice < minimumTotalPrice || totalPrice == minimumTotalPrice) {
+            if (totalPrice <= minimumTotalPrice) {
                 minimumTotalPrice = totalPrice;
-                hotel = aHotel;
+                if (hotelRating < aHotel.getRating())
+                    hotel = aHotel;
             }
         }
         return hotel;
