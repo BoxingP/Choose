@@ -3,21 +3,25 @@ package com.boxing.unit;
 import java.util.List;
 
 public class HotelChooser {
+    private Hotel expectHotel;
 
     public Hotel choose(List<Hotel> hotelList, HotelBooking booking) {
 
-        Hotel hotel = hotelList.get(0);
-        int minimumTotalPrice = hotel.getPrice(booking);
-        int hotelRating = hotel.getRating();
+        expectHotel = hotelList.get(0);
 
         for (Hotel aHotel : hotelList) {
-            int totalPrice = aHotel.getPrice(booking);
-            if (totalPrice <= minimumTotalPrice) {
-                minimumTotalPrice = totalPrice;
-                if (hotelRating < aHotel.getRating())
-                    hotel = aHotel;
-            }
+            chooseCheaperHotel(expectHotel, aHotel, booking);
         }
-        return hotel;
+        return expectHotel;
+    }
+
+    private void chooseCheaperHotel(Hotel hotelA, Hotel hotelB, HotelBooking booking) {
+        if (hotelB.getPrice(booking) <= hotelA.getPrice(booking)) {
+            expectHotel = chooseHigherRatingHotel(hotelA, hotelB);
+        }
+    }
+
+    private Hotel chooseHigherRatingHotel(Hotel hotelA, Hotel hotelB) {
+        return hotelB.getRating() > hotelA.getRating() ? hotelB : hotelA;
     }
 }

@@ -9,7 +9,7 @@ public class HotelBooking {
     }
 
     public CustomerType getCustomerType() {
-        return customerType.toUpperCase().equals(CustomerType.REWARDS.name()) ? CustomerType.REWARDS : CustomerType.REGULAR;
+        return CustomerType.valueOf(customerType.toUpperCase());
     }
 
     public int getWeekdayAmount() {
