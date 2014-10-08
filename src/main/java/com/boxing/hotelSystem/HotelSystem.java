@@ -2,11 +2,12 @@ package com.boxing.hotelSystem;
 
 import com.boxing.unit.*;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 
 public class HotelSystem {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException{
         String bookInformation = args[0];
         HotelBooking booking = new HotelBooking(bookInformation);
         HotelChooser chooser = new HotelChooser();
