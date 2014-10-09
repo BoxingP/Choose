@@ -15,6 +15,6 @@ public class HotelTest {
         when(mockBooking.getCustomerType()).thenReturn(CustomerType.REGULAR);
         when(mockBooking.getWeekdayAmount()).thenReturn(1);
         when(mockBooking.getWeekendAmount()).thenReturn(0);
-        assertThat(new Hotel("A", new Price(110, 90, 80, 80), 1).getPrice(mockBooking), is(110));
+        assertThat(new Hotel("A", new Price(110, 90, 80, 80), HotelRating.THREESTARS).getPrice(mockBooking), is(110));
     }
 }

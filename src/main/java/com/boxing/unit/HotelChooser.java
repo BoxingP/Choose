@@ -21,6 +21,6 @@ public class HotelChooser {
     }
 
     private Hotel chooseHigherRatingHotel(Hotel hotelA, Hotel hotelB) {
-        return hotelB.getRating() > hotelA.getRating() ? hotelB : hotelA;
+        return hotelB.getRating().ordinal() > hotelA.getRating().ordinal() ? hotelB : hotelA;
     }
 }

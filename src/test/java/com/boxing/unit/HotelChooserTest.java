@@ -30,27 +30,27 @@ public class HotelChooserTest {
     @Test
     public void ShouldHotelAIsCheap_return_hotelA() {
         when(mockHotelA.getPrice(booking)).thenReturn(2);
-        when(mockHotelA.getRating()).thenReturn(2);
+        when(mockHotelA.getRating()).thenReturn(HotelRating.THREESTARS);
         when(mockHotelB.getPrice(booking)).thenReturn(3);
-        when(mockHotelB.getRating()).thenReturn(2);
+        when(mockHotelB.getRating()).thenReturn(HotelRating.THREESTARS);
         assertThat(chooser.choose(hotelListing, booking), is(mockHotelA));
     }
 
     @Test
     public void ShouldHotelBRatingIsHigh_return_hotelB() {
         when(mockHotelA.getPrice(booking)).thenReturn(2);
-        when(mockHotelA.getRating()).thenReturn(2);
+        when(mockHotelA.getRating()).thenReturn(HotelRating.THREESTARS);
         when(mockHotelB.getPrice(booking)).thenReturn(2);
-        when(mockHotelB.getRating()).thenReturn(3);
+        when(mockHotelB.getRating()).thenReturn(HotelRating.FOURSTARS);
         assertThat(chooser.choose(hotelListing, booking), is(mockHotelB));
     }
 
     @Test
     public void ShouldHotelBPriceIsLowRatingIsLow_return_hotelB() {
         when(mockHotelA.getPrice(booking)).thenReturn(2);
-        when(mockHotelA.getRating()).thenReturn(2);
+        when(mockHotelA.getRating()).thenReturn(HotelRating.FOURSTARS);
         when(mockHotelB.getPrice(booking)).thenReturn(1);
-        when(mockHotelB.getRating()).thenReturn(1);
+        when(mockHotelB.getRating()).thenReturn(HotelRating.THREESTARS);
         assertThat(chooser.choose(hotelListing, booking), is(mockHotelB));
     }
 }

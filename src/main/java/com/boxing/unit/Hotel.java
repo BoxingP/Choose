@@ -3,9 +3,9 @@ package com.boxing.unit;
 public class Hotel {
     private String name;
     private Price price;
-    private int rating;
+    private HotelRating rating;
 
-    public Hotel(String name, Price price, int rating) {
+    public Hotel(String name, Price price, HotelRating rating) {
         this.name = name;
         this.price = price;
         this.rating = rating;
@@ -19,7 +19,7 @@ public class Hotel {
         return price.getTotalPrice(booking);
     }
 
-    public int getRating() {
+    public HotelRating getRating() {
         return rating;
     }
 }
