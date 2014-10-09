@@ -21,7 +21,7 @@ public class Hotel {
         return price.getTotalPrice(booking);
     }
 
-    public HotelRating getRating() {
-        return rating;
+    public int getRating() {
+        return rating.ordinal();
     }
 }
