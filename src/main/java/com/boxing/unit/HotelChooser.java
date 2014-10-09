@@ -7,18 +7,17 @@ public class HotelChooser {
 
     public Hotel choose(List<Hotel> hotelList, HotelBooking booking) {
 
-        expectHotel = hotelList.get(0);
+        Hotel startHotel = hotelList.get(0);
 
         for (Hotel aHotel : hotelList) {
-            chooseCheaperHotel(expectHotel, aHotel, booking);
+            chooseCheaperHotel(startHotel, aHotel, booking);
         }
         return expectHotel;
     }
 
     private void chooseCheaperHotel(Hotel hotelA, Hotel hotelB, HotelBooking booking) {
-        if (hotelB.getPrice(booking) <= hotelA.getPrice(booking)) {
-            expectHotel = chooseHigherRatingHotel(hotelA, hotelB);
-        }
+        if (hotelB.getPrice(booking) < hotelA.getPrice(booking)) expectHotel=hotelB;
+        if (hotelB.getPrice(booking) == hotelA.getPrice(booking)) expectHotel=chooseHigherRatingHotel(hotelA, hotelB);
     }
 
     private Hotel chooseHigherRatingHotel(Hotel hotelA, Hotel hotelB) {
