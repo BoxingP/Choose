@@ -1,5 +1,7 @@
 package com.boxing.unit;
 
+import com.boxing.hotelSystem.HotelBooking;
+
 public class Price {
     private int regularWeekdayUnitPrice;
     private int regularWeekendUnitPrice;

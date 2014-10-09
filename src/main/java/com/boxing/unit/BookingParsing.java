@@ -7,41 +7,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class HotelBooking {
-    private CustomerType customerType;
-    private List<Calendar> dates;
+public class BookingParsing {
 
-    public HotelBooking(String bookInformation) throws ParseException {
-        customerType = getCustomerType(bookInformation);
-        dates = getDates(bookInformation);
-    }
-
-    public CustomerType getCustomerType() {
-        return customerType;
-    }
-
-    public int getWeekdayAmount() {
-        return dates.size() - getWeekendAmount();
-    }
-
-    public int getWeekendAmount() {
-
-        int weekendAmount = 0;
-        for (Calendar date : dates) {
-            if (isWeekend(date)) weekendAmount++;
-        }
-        return weekendAmount;
-
-
-    }
-
-    private CustomerType getCustomerType(String bookInformation) {
+    public CustomerType getCustomerType(String bookInformation) {
         String[] information = bookInformation.split(": ");
         return CustomerType.valueOf(information[0].toUpperCase());
     }
 
-
-    private List<Calendar> getDates(String bookInformation) throws ParseException {
+    public List<Calendar> getDates(String bookInformation) throws ParseException {
         String[] information = bookInformation.split(": ");
         String[] dates = information[1].split(", ");
         List<String> datesWithoutWeek = deleteWeek(dates);
@@ -64,10 +37,5 @@ public class HotelBooking {
             result.add(sequence[0]);
         }
         return result;
-    }
-
-    private boolean isWeekend(Calendar date) {
-        int i = date.get(Calendar.DAY_OF_WEEK);
-        return (i == Calendar.SATURDAY || i == Calendar.SUNDAY);
     }
 }

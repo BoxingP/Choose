@@ -1,5 +1,6 @@
 package com.boxing.unit;
 
+import com.boxing.hotelSystem.HotelBooking;
 import org.junit.Before;
 import org.junit.Test;
 

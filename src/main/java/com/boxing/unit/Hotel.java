@@ -1,5 +1,7 @@
 package com.boxing.unit;
 
+import com.boxing.hotelSystem.HotelBooking;
+
 public class Hotel {
     private String name;
     private Price price;

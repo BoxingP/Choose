@@ -1,5 +1,5 @@
 package com.boxing.unit;
 
 public enum HotelRating {
-    THREESTARS, FOURSTARS, FIVESTARS
+    STARS_3, STARS_4, STARS_5
 }
