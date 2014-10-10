@@ -1,4 +1,4 @@
-package com.boxing.hotel.hotelSystem;
+package com.boxing.hotel.cli;
 
 import com.boxing.hotel.unit.*;
 

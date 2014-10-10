@@ -1,6 +1,6 @@
 package com.boxing.hotel.servlet;
 
-import com.boxing.hotel.hotelSystem.HotelChooser;
+import com.boxing.hotel.unit.HotelChooser;
 import com.boxing.hotel.unit.Hotel;
 import com.boxing.hotel.unit.HotelList;
 

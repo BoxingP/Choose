@@ -1,4 +1,4 @@
-package com.boxing.hotel.hotelSystem;
+package com.boxing.hotel.unit;
 
 import com.boxing.hotel.unit.BookingParsing;
 import com.boxing.hotel.unit.CustomerType;

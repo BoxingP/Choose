@@ -27,7 +27,7 @@ jacocoTestReport {
 task bookHotel (type: JavaExec) {
     String input = project.getProperty("args")
 
-    main = "com.boxing.hotel.hotelSystem.HotelSystem"
+    main = "com.boxing.hotel.cli.HotelSystem"
     args = [input]
     classpath sourceSets.main.runtimeClasspath
 }

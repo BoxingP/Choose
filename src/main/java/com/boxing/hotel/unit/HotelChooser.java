@@ -1,5 +1,6 @@
-package com.boxing.hotel.hotelSystem;
+package com.boxing.hotel.unit;
 
+import com.boxing.hotel.unit.CalculatingRule;
 import com.boxing.hotel.unit.Hotel;
 
 import java.text.ParseException;

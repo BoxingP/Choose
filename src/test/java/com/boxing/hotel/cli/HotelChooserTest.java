@@ -1,6 +1,7 @@
-package com.boxing.hotel.hotelSystem;
+package com.boxing.hotel.cli;
 
 import com.boxing.hotel.unit.Hotel;
+import com.boxing.hotel.unit.HotelChooser;
 import org.junit.Before;
 
 import java.util.Arrays;
