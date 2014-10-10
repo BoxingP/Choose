@@ -1,4 +1,4 @@
-package com.boxing.hotelSystem;
+package com.boxing.hotel.hotelSystem;
 
 import org.junit.Before;
 import org.junit.Test;

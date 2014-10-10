@@ -1,6 +1,4 @@
-package com.boxing.unit;
-
-import com.boxing.hotelSystem.HotelBooking;
+package com.boxing.hotel.unit;
 
 public class Hotel {
     private String name;
@@ -17,8 +15,8 @@ public class Hotel {
         return name;
     }
 
-    public int getPrice(HotelBooking booking) {
-        return price.getTotalPrice(booking);
+    public Price getPrice() {
+        return price;
     }
 
     public int getRating() {

@@ -1,7 +1,7 @@
-package com.boxing.hotelSystem;
+package com.boxing.hotel.hotelSystem;
 
-import com.boxing.unit.BookingParsing;
-import com.boxing.unit.CustomerType;
+import com.boxing.hotel.unit.BookingParsing;
+import com.boxing.hotel.unit.CustomerType;
 
 import java.text.ParseException;
 import java.util.Calendar;

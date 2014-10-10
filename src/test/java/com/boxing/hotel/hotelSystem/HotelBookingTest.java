@@ -1,6 +1,6 @@
-package com.boxing.hotelSystem;
+package com.boxing.hotel.hotelSystem;
 
-import com.boxing.unit.CustomerType;
+import com.boxing.hotel.unit.CustomerType;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.boxing.unit;
+package com.boxing.hotel.unit;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
