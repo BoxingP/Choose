@@ -6,7 +6,7 @@ import java.text.ParseException;
 
 public class HotelSystem {
 
-    public Hotel bookHotel(String bookInformation) throws ParseException {
+    private Hotel bookHotel(String bookInformation) throws ParseException {
         HotelChooser chooser = new HotelChooser();
         return chooser.choose(HotelList.HotelListing, bookInformation);
     }
