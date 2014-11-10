@@ -1,4 +1,4 @@
-package com.boxing.hotel.cli;
+package com.boxing.hotel.unit;
 
 import com.boxing.hotel.unit.Hotel;
 import com.boxing.hotel.unit.HotelChooser;
@@ -16,7 +16,7 @@ public class HotelChooserTest {
     Hotel mockHotelA;
     Hotel mockHotelB;
     List<Hotel> hotelListing;
-    HotelBooking booking;
+//    HotelBooking booking;
 
     @Before
     public void initObject() {
@@ -24,7 +24,7 @@ public class HotelChooserTest {
         mockHotelA = mock(Hotel.class);
         mockHotelB = mock(Hotel.class);
         hotelListing = Arrays.asList(mockHotelA, mockHotelB);
-        booking = mock(HotelBooking.class);
+//        booking = mock(HotelBooking.class);
     }
 
 //    @Test

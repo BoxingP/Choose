@@ -1,8 +1,6 @@
 package com.boxing.hotel.servlet;
 
-import com.boxing.hotel.unit.HotelChooser;
-import com.boxing.hotel.unit.Hotel;
-import com.boxing.hotel.unit.HotelList;
+import com.boxing.hotel.unit.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -13,7 +11,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
 
 public class ResultServlet extends HttpServlet {
     @Override
@@ -22,7 +20,7 @@ public class ResultServlet extends HttpServlet {
         String startDate = req.getParameter("start_date");
         String endDate = req.getParameter("end_date");
 
-        String hotelName = null;
+        String hotelName;
         try {
             hotelName = calculateRecommendHotel(customerType, startDate, endDate);
         } catch (ParseException e) {
@@ -37,18 +35,28 @@ public class ResultServlet extends HttpServlet {
         outputStreamWriter.flush();
     }
 
-    private String calculateRecommendHotel(String customerType, String startDateStr, String endDateStr) throws ParseException {
-        SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyyMMdd");
+    private String calculateRecommendHotel(String customerTypeStr, String startDateStr, String endDateStr) throws ParseException {
+        CustomerType customerType=CustomerType.valueOf(customerTypeStr);
+        SimpleDateFormat inputDateFormat = new SimpleDateFormat("ddMMMyyyy");
         Date startDate = inputDateFormat.parse(startDateStr);
         Date endDate = inputDateFormat.parse(endDateStr);
-        SimpleDateFormat outputDateFormat = new SimpleDateFormat("ddMMMyyyy()");
-        String formattedStartDate = outputDateFormat.format(startDate);
-        String formattedEndDate = outputDateFormat.format(endDate);
 
+        Calendar day1 = new GregorianCalendar();
+        Calendar day2 = new GregorianCalendar();
 
-        String sequence = customerType + ": " + formattedStartDate + ", " + formattedEndDate;
+        day1.setTime(startDate);
+        day2.setTime(endDate);
+        List<Calendar> bookingDates = new ArrayList<Calendar>();
+
+        while ( day1.compareTo(day2) <= 0) {
+            bookingDates.add(day1);
+            day1.add(Calendar.DAY_OF_YEAR,1);
+        }
+
+        BookInformation bookInformation = new BookInformation(customerType, bookingDates);
+
         HotelChooser hotelChooser = new HotelChooser();
-        Hotel recommendHotel = hotelChooser.choose(HotelList.HotelListing, sequence);
+        Hotel recommendHotel = hotelChooser.choose(HotelList.HotelListing, bookInformation);
         return recommendHotel.getHotelName();
     }
 }

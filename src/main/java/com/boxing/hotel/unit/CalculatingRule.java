@@ -1,20 +1,14 @@
 package com.boxing.hotel.unit;
 
-import com.boxing.hotel.unit.BookingParsing;
-import com.boxing.hotel.unit.CustomerType;
-import com.boxing.hotel.unit.Hotel;
-import com.boxing.hotel.unit.Price;
-
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.List;
 
 public class CalculatingRule {
 
-    public int getTotalPrice(String bookInformation, Hotel hotel) throws ParseException {
-        BookingParsing bookingParsing = new BookingParsing();
-        CustomerType customerType = bookingParsing.getCustomerType(bookInformation);
-        List<Calendar> dates = bookingParsing.getDates(bookInformation);
+    public int getTotalPrice(BookInformation bookInformation, Hotel hotel) throws ParseException {
+        CustomerType customerType = bookInformation.getCustomerType();
+        List<Calendar> dates = bookInformation.getBookingDates();
 
         int weekendAmount = getWeekendAmount(dates);
         int weekdayAmount = dates.size() - weekendAmount;

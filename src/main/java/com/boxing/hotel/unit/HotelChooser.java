@@ -1,14 +1,11 @@
 package com.boxing.hotel.unit;
 
-import com.boxing.hotel.unit.CalculatingRule;
-import com.boxing.hotel.unit.Hotel;
-
 import java.text.ParseException;
 import java.util.List;
 
 public class HotelChooser {
 
-    public Hotel choose(List<Hotel> HotelListing, String bookingInformation) throws ParseException {
+    public Hotel choose(List<Hotel> HotelListing, BookInformation bookingInformation) throws ParseException {
         Hotel expectHotel = HotelListing.get(0);
 
         for (Hotel aHotel : HotelListing) {
@@ -17,7 +14,7 @@ public class HotelChooser {
         return expectHotel;
     }
 
-    private Hotel chooseCheaperHotel(Hotel hotelA, Hotel hotelB, String bookingInformation) throws ParseException {
+    private Hotel chooseCheaperHotel(Hotel hotelA, Hotel hotelB, BookInformation bookingInformation) throws ParseException {
         CalculatingRule calculatingRule = new CalculatingRule();
 
         int hotelAPrice = calculatingRule.getTotalPrice(bookingInformation, hotelA);
